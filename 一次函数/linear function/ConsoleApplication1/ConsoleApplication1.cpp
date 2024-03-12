@@ -1,16 +1,22 @@
-﻿/*
+/*
 此文件通过两点法求出K值，再通过一个方程求出B值
-创建时间：                      2019/3/30   21：23
-作者：                          傅邓文
-所有修改者请留下大名或昵称：    傅邓文
+创建时间： 2019/3/30   21：23
+作者： cmy
+所有修改者请留下大名或昵称： cmy
 
-最后修改时间：                  2019/3/30                             2019/3/31 19：32
-版本：                            v1.0                                      v2.0
-修改内容：                         无         增加了k与b的大小判断，为零的时候不写，为±1的时候则不写1
-				   _ooOoo_
-				  o8888888o
+修改时间：                        2019/3/30  
+版本：                                   v1.0
+修改内容：                              无
+修改时间：                  2019/3/31 19：32
+版本：                                    v2.0
+修改内容：增加了k与b的大小判断，为零的时候不写，为±1的时候则不写1
+修改时间：                        2024/3/12 
+版本：                                    v3.0 
+修改内容：             修了一些bug，重新编排了一下文件
+			     _ooOoo_
+			   o8888888o
 				  88" . "88
-				  (| -_- |)
+			  	    (| -_- |)
 				  O\  =  /O
 			   ____/`---'\____
 			 .'  \\|     |//  `.
@@ -49,17 +55,16 @@ int main(void)
 	double a, b, c, d, K, b_;
 	int _____ = 0;//五个下划线，如果输入字母过后会无限刷屏，所以设置最高循环次数，能够让别人看不清发生了什么
 	printf("************通过两个点算出一个解析式************\n");
-	printf("*****************请按照提示输入*****************\n");
-	printf("            请勿在输入坐标处输入字母\n\n\n");
+	printf("****use two points to calculate the function****\n");
+	printf("*****************请按照提示输入*****************\n");	
+	printf("***** please following the instruction *****\n");
+	printf("            请勿在输入坐标处输入字母\n do not input letters between two numbers\n\n");
 
 
-	printf("如果有想要源代码，联系我，");
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_BLUE);
-	printf("QQ：2798740764\n");
-	printf("为了避免做题过于认真，我设置了循环次数，50次后将会自动关闭，请休息一下在使用（不休息也可以，直接再次打开就行了）\n\n\n");
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 	//a为X1，b为Y1；c为X2，d为Y2;b_为b值（截距）;
-a_:	if (_____ >= 50)
+a_:	if (_____ >= 200)//200次后自动关闭，以免出现异常
 	{
 	exit(0);
 	}
@@ -67,27 +72,27 @@ a_:	if (_____ >= 50)
 	{
 	_____++;
 	}
-	printf("请输入第一个X坐标然后按【Enter】：");
+	printf("请输入第一个X坐标然后按 (X1)【Enter】：");
 	cin >> a;
-	printf("请输入第一个Y坐标然后按【Enter】：");
+	printf("请输入第一个Y坐标然后按 (X2)【Enter】：");
 	cin >> b;
-	printf("请输入第二个X坐标然后按【Enter】：");
+	printf("请输入第二个X坐标然后按 (Y1)【Enter】：");
 	cin >> c;
-	printf("请输入第二个Y坐标然后按【Enter】：");
+	printf("请输入第二个Y坐标然后按 (Y2)【Enter】：");
 	cin >> d;	
 	if (a == c)
 	{
 		if (b == d)
 		{
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED);
-			printf("请勿输入同一点坐标，请重新输入\n\n");
+			printf("请勿输入同一点坐标，请重新输入 (the same point! ) \n\n");
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 			goto a_;
 		}
 		else
 		{
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED);
-			printf("此时k值无意义,请重新输入\n\n");
+			printf("此时k值无意义,请重新输入 (the slope is meaningless! ) \n\n");
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 			goto a_;
 		}
